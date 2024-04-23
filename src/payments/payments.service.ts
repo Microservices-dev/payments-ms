@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { envs } from 'src/config';
 import Stripe from 'stripe';
 import { PaymentSessionDto } from './dtos/payment-session.dto';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class PaymentsService {
@@ -31,5 +32,11 @@ export class PaymentsService {
       cancel_url: 'http://localhost:3000/payments/cancel',
     });
     return session;
+  }
+
+  async stripeWebhook(req: Request, res: Response) {
+    const sign = req.headers['stripe-signature'];
+    console.log(sign);
+    return res.status(200).json({ sign });
   }
 }
