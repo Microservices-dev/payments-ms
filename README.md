@@ -27,6 +27,21 @@ docker run --rm -it stripe/stripe-cli trigger payment_intent.created \
     --api-key your_api_key_from_stripe
 ```
 
+para pruebas en local, es necesario levantar el servicio de https://dashboard.hookdeck.com/connections para hacer un puente entre stripe y tu maquiena local.
+instalarlo en tu computador con
+
+```
+npm install hookdeck-cli -g
+```
+
+despues correr:
+
+```
+hookdeck listen 3000 stripe-to-localhost
+```
+
+Ojo el stripe-to-localhost hay que levantarlo en https://dashboard.hookdeck.com
+
 ### Author
 
 ![enter image description here](https://avatars1.githubusercontent.com/u/6466769?s=170&v=4)

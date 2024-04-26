@@ -2,6 +2,7 @@ import { Type } from 'class-transformer';
 import {
   ArrayMinSize,
   IsArray,
+  IsNotEmpty,
   IsNumber,
   IsPositive,
   IsString,
@@ -9,6 +10,10 @@ import {
 } from 'class-validator';
 
 export class PaymentSessionDto {
+  @IsString()
+  @IsNotEmpty()
+  orderId: string;
+
   @IsString()
   currency: string;
 
@@ -21,6 +26,7 @@ export class PaymentSessionDto {
 
 export class PaymentSessionItemDto {
   @IsString()
+  @IsNotEmpty()
   name: string;
 
   @IsNumber()
