@@ -11,7 +11,6 @@ export class PaymentsController {
   @Post('create-session-payment')
   @MessagePattern({ cmd: 'create-session-payment' })
   createPaymentSession(@Body() body: PaymentSessionDto) {
-    console.log(body);
     return this.paymentsService.creatPaymentSession(body);
   }
 
